@@ -1,0 +1,35 @@
+{# kế thừa file template layout #}
+{% extends "layout.html.twig" %}
+
+{# chèn nội dung vào block body #}
+{% block body %}
+    <div class="container col-md-6">
+        <table class="table table-table">
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Student Dob</th>
+                {# <th>Student Address</th>
+                <th>Student Phone</th> #}
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>
+                    <a href="{{ path('student_detail', {'id' : student.id }) }}">
+                    {{ student.name }}
+                    </a>
+                </td>
+                <td>{{ student.dob | date('d/m/Y') }}</td>
+                {# <td>{{ student.address }}</td>
+                <td>{{ student.phone }}</td> #}
+            </tr>            
+        {% endfor %}
+
+        </tbody>
+        </table>    
+    </div>
+{% endblock %}
